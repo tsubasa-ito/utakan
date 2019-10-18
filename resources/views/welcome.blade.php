@@ -84,13 +84,9 @@
             @endif
 
             <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
-                <div id="app">
+                {{-- <div id="app"> --}}
                     <example-component></example-component>
-                </div>
-
+                {{-- </div> --}}
             </div>
         </div>
         <!-- body タグの最後に足す-->
