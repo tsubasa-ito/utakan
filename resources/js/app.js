@@ -13,6 +13,16 @@ Vue.use(VueRouter);
 import axios from 'axios';
 Vue.use(axios);
 
+// ElementUI
+import ElementUI from 'element-ui'
+import 'element-ui/lib/theme-chalk/index.css'
+import locale from 'element-ui/lib/locale/lang/ja'
+Vue.use(ElementUI, { locale })
+
+import MuseUI from 'muse-ui';
+import 'muse-ui/dist/muse-ui.css';
+Vue.use(MuseUI);
+
 // Component
 import Create from './Create.vue';
 import Index from './Index.vue';
