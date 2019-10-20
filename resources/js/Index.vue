@@ -3,15 +3,15 @@
         <!-- index -->
         <h1>indexpage</h1>
         <p>
-            <router-link :to="{ name: 'create' }">記事作成</router-link>
+            <router-link :to="{ name: 'create' }">CREATE</router-link>
         </p>
-        <div v-for="card in cards" :key="card.id" class="col-md-8">
+        <div v-for="song in songs" :key="song.id" class="col-md-8">
             <div class="m-card mb-3">
                 <div class="card-img-flame">
                     <img class="card-img" src="https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png">
                     <div class="m-card-title">
-                        <div class="card-music-name">card-img-music-name</div>
-                        <div class="card-artist-name">card-img-artist-name</div>
+                        <div class="card-music-name">{{song.song_name}}</div>
+                        <div class="card-artist-name">{{ song.artist_name }}</div>
                     </div>
                 </div>
                 <div class="m-header">
@@ -22,16 +22,13 @@
                             </div>
                         </div>
                         <div class="avatar-content">
-                            <div class="avatar-name">avatar-name</div>
-                            <div class="avatar-date">avatara-date</div>
+                            <div class="avatar-name">{{ song.user_id }}</div>
+                            <div class="avatar-date">{{ song.updated_at }}</div>
                         </div>
                     </div>
                 </div>
                 <div class="m-card-text">
-                    散落在指尖的阳光，我试着轻轻抓住光影的踪迹，它却在眉宇间投下一片淡淡的阴影。
-                    调皮的阳光掀动了四月的心帘，温暖如约的歌声渐起。
-                    似乎在诉说着，我也可以在漆黑的角落里，找到阴影背后的阳光，
-                    找到阳光与阴影奏出和谐的旋律。我要用一颗敏感赤诚的心迎接每一缕滑过指尖的阳光！
+                    {{ songs.comment}}
                 </div>
                 <div class="m-card-actions">
                     <mu-button flat>Action 1</mu-button>
@@ -45,19 +42,24 @@
     export default {
         data() {
             return {
-                currentDate: new Date(),
-                cards: [
+                songs: [
                     {
-                        title: "タイトル1",
-                        name: "ユーザー名1",
-                    },
-                    {
-                        title: "タイトル2",
-                        name: "ユーザー名2",
-                    },
-                ]
+                        user_id: '',
+                        image: '',
+                        artist_name: '',
+                        song_name: '',
+                        comment: '',
+                        updated_at: '',
+                    }
+                ],
             }
         },
+        created() {
+           const uri = '/api/songs';
+           this.axios.get(uri).then(response => {
+               this.songs = response.data.data;
+           });
+       },
         mounted() {
 
             }

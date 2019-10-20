@@ -18,6 +18,9 @@ Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
 Route::get('/register', 'Auth\RegisterController@showRegistrationForm')->name('register');
 Route::post('/register', 'Auth\RegisterController@register');
 
+// Route::get('/', 'SongController@index');
+// Route::get('/create', 'SongController@create');
+
 Route::get('/{any}', function () {
     return view('layouts.app');
 })->where('any', '.*');

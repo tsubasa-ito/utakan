@@ -14,8 +14,8 @@
 </head>
 <body>
     <div id="app">
-        <nav>UTAKAN</nav>
         <router-view></router-view>
+        app.blade.php
     </div>
     <script src="{{ mix('js/app.js') }}" type="text/javascript"></script>
 </body>

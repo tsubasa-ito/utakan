@@ -16,3 +16,9 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+Route::get('/songs', 'SongController@index');
+Route::get('/create', 'SongController@create');
+Route::post('/song/create', 'SongController@store');
+Route::get('/song/edit/{id}', 'SongsController@edit');
+Route::post('/song/update/{id}', 'SongsController@update');
+Route::delete('/song/delete/{id}', 'SongController@delete');

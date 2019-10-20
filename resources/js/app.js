@@ -9,9 +9,9 @@ import VueRouter from 'vue-router';
 Vue.use(VueRouter);
 
 // VueAxios
-// import VueAxios from 'vue-axios';
+import VueAxios from 'vue-axios';
 import axios from 'axios';
-Vue.use(axios);
+Vue.use(VueAxios, axios);
 
 // ElementUI
 import ElementUI from 'element-ui'
@@ -24,8 +24,11 @@ import 'muse-ui/dist/muse-ui.css';
 Vue.use(MuseUI);
 
 // Component
+import App from './App.vue';
+import Home from './Home.vue';
 import Create from './Create.vue';
 import Index from './Index.vue';
+import Edit from './Edit.vue';
 
 
 // const files = require.context('./', true, /\.vue$/i);
@@ -35,15 +38,26 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 
 const routes = [
     {
-        name: 'index',
+        name: 'Home',
         path: '/',
-        component: Index
+        component: Home
     },
     {
         name: 'create',
         path: '/create',
         component: Create
+    },
+    {
+        name: 'songs',
+        path: '/songs',
+        component: Index
+    },
+    {
+        name: 'edit',
+        path: '/edit/:id',
+        component: Edit
     }
+
 ];
 
 const router = new VueRouter({
@@ -51,6 +65,8 @@ const router = new VueRouter({
      routes: routes
 });
 
-const app = new Vue({
-    router
-}).$mount('#app');
+const app = new Vue(
+    Vue.util.extend(
+        { router }, App
+    )
+).$mount('#app');
