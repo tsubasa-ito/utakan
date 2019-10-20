@@ -2,6 +2,10 @@
     <div class="col-md-8 col-md-offset-2">
         <!-- create -->
         <h1>createpage</h1>
+        <img :src="songs.matchs" alt="">
+        <p>{{ songs.song_name }}</p>
+        <p>{{ songs.artist_name }}</p>
+        <p>{{ songs.kasi }}</p>
         <mu-container>
             <mu-form ref="form" :model="form" class="mu-demo-form" @submit.prevent="addSong">
                 <mu-form-item label="UserId" help-text="help text" prop="user_id" :rules="MusicnameRules">
@@ -11,10 +15,10 @@
                   <mu-text-field v-model="form.image" prop="image"></mu-text-field>
                 </mu-form-item>
                 <mu-form-item label="歌手名" help-text="help text" prop="artist_name" :rules="MusicnameRules">
-                  <mu-text-field v-model="form.artist_name" prop="artist_name"></mu-text-field>
+                  <mu-text-field v-model="songs.artist_name" prop="artist_name"></mu-text-field>
                 </mu-form-item>
                 <mu-form-item label="曲名" help-text="help text" prop="song_name" :rules="MusicnameRules">
-                  <mu-text-field v-model="form.song_name" prop="song_name"></mu-text-field>
+                  <mu-text-field v-model="songs.song_name" prop="song_name"></mu-text-field>
                 </mu-form-item>
                 <mu-form-item label="コメント" help-text="help text" prop="comment" :rules="MusicnameRules">
                   <mu-text-field v-model="form.comment" prop="comment"></mu-text-field>
@@ -32,8 +36,11 @@
             return {
                 songs: [
                     {
-                        artist: '',
-                        musicimg: '',
+                        artist_name: '',
+                        song_name: '',
+                        images: '',
+                        matchs: '',
+                        kasi : '',
                     }
                 ],
                 MusicnameRules: [
@@ -48,6 +55,12 @@
                     comment: '',
                 }
             }
+        },
+        created() {
+           const uri = '/api/create';
+           this.axios.get(uri).then(response => {
+               this.songs = response.data;
+           });
         },
         methods: {
             submit () {

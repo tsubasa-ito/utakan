@@ -2,9 +2,6 @@
     <div class="col-md-8 col-md-offset-2">
         <!-- index -->
         <h1>indexpage</h1>
-        <p>
-            <router-link :to="{ name: 'create' }">CREATE</router-link>
-        </p>
         <div v-for="song in songs" :key="song.id" class="col-md-8">
             <div class="m-card mb-3">
                 <div class="card-img-flame">
