@@ -29,7 +29,6 @@ import Home from './Home.vue';
 import Create from './Create.vue';
 import Index from './Index.vue';
 import Edit from './Edit.vue';
-import Result from './Result.vue';
 import Data from './Data.vue';
 
 
@@ -37,7 +36,6 @@ import Data from './Data.vue';
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
-Vue.component('search-component', require('./components/SearchComponent.vue').default);
 
 const routes = [
     {
@@ -59,11 +57,6 @@ const routes = [
         name: 'edit',
         path: '/edit/:id',
         component: Edit
-    },
-    {
-        name: 'search',
-        path: '/songs/:keyword',
-        component: Result
     },
     {
         name: 'data',

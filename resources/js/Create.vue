@@ -2,10 +2,6 @@
     <div class="col-md-8 col-md-offset-2">
         <!-- create -->
         <h1>createpage</h1>
-        <img :src="songs.matchs" alt="">
-        <p>{{ songs.song_name }}</p>
-        <p>{{ songs.artist_name }}</p>
-        <p>{{ songs.kasi }}</p>
         <mu-container>
             <mu-form ref="form" :model="form" class="mu-demo-form" @submit.prevent="addSong">
                 <mu-form-item label="UserId" help-text="help text" prop="user_id" :rules="MusicnameRules">
@@ -57,10 +53,6 @@
             }
         },
         created() {
-           const uri = '/api/create';
-           this.axios.get(uri).then(response => {
-               this.songs = response.data;
-           });
         },
         methods: {
             submit () {
