@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Resources\SongCollection;
 use App\Song;
 use Weidner\Goutte\GoutteFacade as GoutteFacade;
+use GuzzleHttp\Client;
 
 class SongController extends Controller
 {
@@ -129,4 +130,17 @@ class SongController extends Controller
         $task->delete();
         return response()->json('deleted');
     }
+
+    public function data()
+    {
+            $client = new Client();
+            $sourceUrl = "http://api.musixmatch.com/ws/1.1/track.search?q_artist=Aimer&page_size=12&page=1&apikey=ff85a9e764fab54af3ab72c3210745f1";
+            $responseData = $client -> request("GET", $sourceUrl);
+            $responseBody = json_decode($responseData -> getBody() -> getContents(), true);
+            return [
+             "status" => "OK",
+             "data" => $responseBody,
+            ];
+    }
+
 }
