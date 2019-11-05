@@ -18,9 +18,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 Route::get('/songs', 'SongController@index');
 Route::get('/create', 'SongController@create');
-Route::post('/song/create', 'SongController@store');
+Route::post('/create/{trackId}', 'SongController@store');
 Route::get('/song/edit/{id}', 'SongsController@edit');
 Route::post('/song/update/{id}', 'SongsController@update');
 Route::delete('/song/delete/{id}', 'SongController@delete');
 
-Route::get("/data", 'SongController@data');
+Route::get("/search", 'SongController@search');
+Route::get("/result/:keyword", 'SongController@data');

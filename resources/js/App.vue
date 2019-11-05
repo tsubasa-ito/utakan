@@ -8,6 +8,9 @@
                 <li class="nav-item">
                     <router-link to="/songs" class="nav-link">Songs</router-link>
                </li>
+                <li class="nav-item">
+                    <router-link to="/search" class="nav-link">Search</router-link>
+               </li>
            </ul>
        </nav>
         <router-view></router-view>

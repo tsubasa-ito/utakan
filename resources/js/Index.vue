@@ -2,12 +2,12 @@
     <div class="col-md-8 col-md-offset-2">
         <!-- index -->
         <h1>indexpage</h1>
-        <div v-for="song in songs" :key="song.id" class="col-md-8">
+        <div v-for="(song, index) in songs" :key="index" class="col-md-8">
             <div class="m-card mb-3">
                 <div class="card-img-flame">
-                    <img class="card-img" src="https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png">
+                    <img class="card-img" :src="song.artwork_url100">
                     <div class="m-card-title">
-                        <div class="card-music-name">{{song.song_name}}</div>
+                        <div class="card-music-name">{{ song.track_name }}</div>
                         <div class="card-artist-name">{{ song.artist_name }}</div>
                     </div>
                 </div>
@@ -19,13 +19,16 @@
                             </div>
                         </div>
                         <div class="avatar-content">
-                            <div class="avatar-name">{{ song.user_id }}</div>
+                            <div class="avatar-name">song.user_id</div>
                             <div class="avatar-date">{{ song.updated_at }}</div>
                         </div>
                     </div>
                 </div>
                 <div class="m-card-text">
-                    {{ songs.comment}}
+                    {{ song.kasi }}
+                </div>
+                <div class="m-card-text">
+                    {{ song.comment }}
                 </div>
                 <div class="m-card-actions">
                     <mu-button flat>Action 1</mu-button>
@@ -41,10 +44,11 @@
             return {
                 songs: [
                     {
-                        user_id: '',
-                        image: '',
+                        track_id: '',
+                        track_name: '',
                         artist_name: '',
-                        song_name: '',
+                        artwork_url100: '',
+                        kasi: '',
                         comment: '',
                         updated_at: '',
                     }
@@ -52,9 +56,10 @@
             }
         },
         created() {
-           const uri = '/api/songs';
-           this.axios.get(uri).then(response => {
+            const uri = '/api/songs';
+            this.axios.get(uri).then(response => {
                this.songs = response.data.data;
+               console.log(response.data.data);
            });
        },
         mounted() {
@@ -182,3 +187,4 @@
         position: relative;
     }
 </style>
+track_id

@@ -29,7 +29,8 @@ import Home from './Home.vue';
 import Create from './Create.vue';
 import Index from './Index.vue';
 import Edit from './Edit.vue';
-import Data from './Data.vue';
+import Search from './Search.vue';
+import Result from './Result.vue';
 
 
 // const files = require.context('./', true, /\.vue$/i);
@@ -45,7 +46,7 @@ const routes = [
     },
     {
         name: 'create',
-        path: '/create',
+        path: '/create/:trackId',
         component: Create
     },
     {
@@ -59,9 +60,14 @@ const routes = [
         component: Edit
     },
     {
-        name: 'data',
-        path: '/data',
-        component: Data
+        name: 'search',
+        path: '/search',
+        component: Search
+    },
+    {
+        name: 'result',
+        path: '/result/:keyword',
+        component: Result
     },
 ];
 

@@ -6,6 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Song extends Model
 {
-    protected $fillable = ['user_id', 'image', 'artist_name', 'song_name', 'comment'];
+    protected $fillable = ['track_id', 'artist_name', 'artwork_url100', 'track_name', 'kasi', 'comment'];
 }
 
