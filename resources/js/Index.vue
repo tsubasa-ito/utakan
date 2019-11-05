@@ -1,38 +1,40 @@
 <template>
-    <div class="col-md-8 col-md-offset-2">
+    <div class="col-md-11">
         <!-- index -->
         <h1>indexpage</h1>
-        <div v-for="(song, index) in songs" :key="index" class="col-md-8">
-            <div class="m-card mb-3">
-                <div class="card-img-flame">
-                    <img class="card-img" :src="song.artwork_url100">
-                    <div class="m-card-title">
-                        <div class="card-music-name">{{ song.track_name }}</div>
-                        <div class="card-artist-name">{{ song.artist_name }}</div>
+        <div class="d-flex flex-wrap">
+            <div v-for="(song, index) in songs" :key="index" class="pr-3">
+                <div class="m-card mb-3">
+                    <div class="card-img-flame">
+                        <img class="card-img" :src="song.artwork_url100">
+                        <div class="m-card-title">
+                            <div class="card-music-name">{{ song.track_name }}</div>
+                            <div class="card-artist-name">{{ song.artist_name }}</div>
+                        </div>
                     </div>
-                </div>
-                <div class="m-header">
-                    <div class="avatar">
-                        <div class="avatar-img-flame">
-                            <div class="avatar-img">
-                                <img class="card-img" src="https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png">
+                    <div class="m-header">
+                        <div class="avatar">
+                            <div class="avatar-img-flame">
+                                <div class="avatar-img">
+                                    <img class="card-img" src="https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png">
+                                </div>
+                            </div>
+                            <div class="avatar-content">
+                                <div class="avatar-name">song.user_id</div>
+                                <div class="avatar-date">{{ song.updated_at }}</div>
                             </div>
                         </div>
-                        <div class="avatar-content">
-                            <div class="avatar-name">song.user_id</div>
-                            <div class="avatar-date">{{ song.updated_at }}</div>
-                        </div>
                     </div>
-                </div>
-                <div class="m-card-text">
-                    {{ song.kasi }}
-                </div>
-                <div class="m-card-text">
-                    {{ song.comment }}
-                </div>
-                <div class="m-card-actions">
-                    <mu-button flat>Action 1</mu-button>
-                    <mu-button flat>Action 2</mu-button>
+                    <div class="m-card-text">
+                        {{ song.kasi }}
+                    </div>
+                    <div class="m-card-text">
+                        {{ song.comment }}
+                    </div>
+                    <div class="m-card-actions">
+                        <mu-button flat>Action 1</mu-button>
+                        <mu-button flat>Action 2</mu-button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -186,5 +188,25 @@
         padding-top: 0;
         position: relative;
     }
+
+
+    .flex-wrapper {
+      width: 100%;
+      height: 56px;
+      margin-top: 8px;
+    }
+    .flex-demo {
+      width: 200px;
+      height: 32px;
+      background-color: #e0e0e0;
+      text-align: center;
+      line-height: 32px;
+      margin-left: 8px;
+    }
+    .flex-wrapper:first-child {
+      margin-top: 0;
+    }
+    .flex-demo:first-child {
+      margin-left: 0;
+    }
 </style>
-track_id
