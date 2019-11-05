@@ -16,7 +16,7 @@ class SongController extends Controller
      */
     public function index()
     {
-        return new SongCollection(Song::all());
+        return new SongCollection(Song::latest()->paginate(10));
     }
 
     /**
