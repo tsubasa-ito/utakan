@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="ja">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,6 +9,8 @@
 
     <title>UtaKan</title>
 
+    {{-- Muse UI icon --}}
+    <link rel="stylesheet" href="https://cdn.bootcss.com/material-design-icons/3.0.1/iconfont/material-icons.css">
     <!-- Styles -->
     <link href="{{ mix('css/app.css') }}" type="text/css" rel="stylesheet" />
 </head>

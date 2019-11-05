@@ -1,18 +1,15 @@
 <template>
-    <div class="container">
-       <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-           <ul class="navbar-nav">
-               <li class="nav-item">
-                    <router-link to="/create" class="nav-link">CREATE</router-link>
-               </li>
-                <li class="nav-item">
-                    <router-link to="/songs" class="nav-link">Songs</router-link>
-               </li>
-                <li class="nav-item">
-                    <router-link to="/search" class="nav-link">Search</router-link>
-               </li>
-           </ul>
-       </nav>
+    <div>
+       <mu-container>
+            <mu-bottom-nav>
+                <router-link to="/songs" class="mr-3">
+                    <mu-bottom-nav-item title="TimeLine" icon="restore"></mu-bottom-nav-item>
+                </router-link>
+                <router-link to="/search" class="mr-3">
+                    <mu-bottom-nav-item title="Search" icon="favorite"></mu-bottom-nav-item>
+                </router-link>
+            </mu-bottom-nav>
+        </mu-container>
         <router-view></router-view>
     </div>
 </template>
