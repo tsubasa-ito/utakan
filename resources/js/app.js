@@ -40,20 +40,20 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 
 const routes = [
     {
-        name: 'Home',
+        name: 'songs',
         path: '/',
-        component: Home
+        component: Index
     },
     {
         name: 'create',
         path: '/create/:trackId',
         component: Create
     },
-    {
-        name: 'songs',
-        path: '/songs',
-        component: Index
-    },
+    // {
+    //     name: 'songs',
+    //     path: '/songs',
+    //     component: Index
+    // },
     {
         name: 'edit',
         path: '/edit/:id',

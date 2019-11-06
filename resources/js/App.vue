@@ -2,7 +2,7 @@
     <div>
        <mu-container>
             <mu-bottom-nav>
-                <router-link to="/songs" class="mr-3">
+                <router-link to="/" class="mr-3">
                     <mu-bottom-nav-item title="TimeLine" icon="restore"></mu-bottom-nav-item>
                 </router-link>
                 <router-link to="/search" class="mr-3">

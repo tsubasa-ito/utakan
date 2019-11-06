@@ -12,23 +12,23 @@
                             <div class="card-artist-name">{{ song.artist_name }}</div>
                         </div>
                     </div>
+                    <div class="m-card-text">
+                        <blockquote>
+                            <p>{{ song.kasi }}</p>
+                        </blockquote>
+                    </div>
                     <div class="m-header">
-                        <div class="avatar">
+                        <div class="avatar pt-0">
                             <div class="avatar-img-flame">
                                 <div class="avatar-img">
                                     <img class="card-img" src="https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png">
                                 </div>
                             </div>
                             <div class="avatar-content">
-                                <div class="avatar-name">song.user_id</div>
+                                <div class="avatar-name">song.user_name</div>
                                 <div class="avatar-date">{{ song.updated_at }}</div>
                             </div>
                         </div>
-                    </div>
-                    <div class="m-card-text">
-                        <blockquote>
-                            <p>{{ song.kasi }}</p>
-                        </blockquote>
                     </div>
                     <div class="m-card-text">
                         {{ song.comment }}
