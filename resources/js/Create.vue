@@ -25,12 +25,11 @@
                     </div>
                 </div>
                 <div class="m-card-text">
-                        <mu-text-field v-model="song.kasi" placeholder="心動いた歌詞を記入。" multi-line :rows="6"></mu-text-field>
+                        <mu-text-field v-model="song.kasi" placeholder="心動いたフレーズを記入。" multi-line :rows="6"></mu-text-field>
                         <mu-text-field v-model="song.comment" placeholder="コメントをしてください。" multi-line :rows="6"></mu-text-field>
                 </div>
                 <div class="m-card-actions">
-                    <mu-button flat @click="addSong">Action 1</mu-button>
-                    <mu-button flat>Action 2</mu-button>
+                    <mu-button flat @click="addSong">Create</mu-button>
                 </div>
             </div>
         </div>

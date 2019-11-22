@@ -17,7 +17,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 Route::get('/songs', 'SongController@index');
-Route::get('/create', 'SongController@create');
+// Route::get('/create', 'SongController@create');
 Route::post('/create/{trackId}', 'SongController@store');
 Route::get('/song/edit/{id}', 'SongsController@edit');
 Route::post('/song/update/{id}', 'SongsController@update');
