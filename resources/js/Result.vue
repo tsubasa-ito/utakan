@@ -1,20 +1,21 @@
 <template>
-    <div class="d-flex flex-wrap">
+    <div class="col-md-11">
         <div>
-            <p>{{ this.$route.params.keyword }}</p>
+            <p>検索キーワード：『 {{ this.$route.params.keyword }} 』</p>
         </div>
-        <div v-for="(result, index) in results" :key="index" class="pr-3">
-            <div class="m-card mb-3">
-                <div class="card-img-flame">
-                    <img class="card-img" :src="result.artworkUrl100">
-                    <div class="m-card-title">
-                        <div class="card-music-name">{{ result.trackName }}</div>
-                        <div class="card-artist-name">{{ result.artistName }}</div>
+        <div class="d-flex flex-wrap">
+            <div v-for="(result, index) in results" :key="index" class="pr-3">
+                <div class="m-card mb-3">
+                    <div class="card-img-flame">
+                        <img class="card-img" :src="result.artworkUrl100">
+                        <div class="m-card-title">
+                            <div class="card-music-name">{{ result.trackName }}</div>
+                            <div class="card-artist-name">{{ result.artistName }}</div>
+                        </div>
                     </div>
-                </div>
-                <div class="m-card-actions">
-                    <mu-button flat @click="select(index)">CREATE</mu-button>
-                    <mu-button flat>Action 2</mu-button>
+                    <div class="m-card-actions">
+                        <mu-button flat @click="select(index)">CREATE</mu-button>
+                    </div>
                 </div>
             </div>
         </div>

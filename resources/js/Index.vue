@@ -36,6 +36,21 @@
                     <div class="m-card-actions">
                         <mu-button flat>Action 1</mu-button>
                         <mu-button flat>Action 2</mu-button>
+                        <mu-menu cover placement="bottom-end" @click="open = !open">
+                            <mu-button icon>
+                              <mu-icon value="more_horiz"></mu-icon>
+                            </mu-button>
+                            <mu-list slot="content">
+                              <mu-list-item button>
+                                  <!-- routerlinkでEditページへ -->
+                                <mu-list-item-title>Edit</mu-list-item-title>
+                              </mu-list-item>
+                              <mu-list-item button>
+                                  <!-- どこにも飛ばさず、そのまま削除（なんかポップアップしても良いかも） -->
+                                <mu-list-item-title>Delete</mu-list-item-title>
+                              </mu-list-item>
+                            </mu-list>
+                        </mu-menu>
                     </div>
                 </div>
             </div>
@@ -46,6 +61,7 @@
     export default {
         data() {
             return {
+                open: false,
                 songs: [
                     {
                         track_id: '',
