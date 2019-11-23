@@ -1,8 +1,10 @@
 <template>
-    <div>
+    <div class="container">
         <h4>music search</h4>
         <input type="text" v-model="keyword" label="検索のフォーム" required>
-        <button @click="search">検索する</button>
+        <mu-button fab color="red" @click="search">
+            <mu-icon value="edit"></mu-icon>
+        </mu-button>
     </div>
 </template>
 <script>

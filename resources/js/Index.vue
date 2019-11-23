@@ -1,57 +1,38 @@
 <template>
     <div class="col-md-11">
-        <!-- index -->
-        <h1>indexpage</h1>
-        <div class="d-flex flex-wrap">
-            <div v-for="(song, index) in songs" :key="index" class="pr-3">
-                <div class="m-card mb-3">
-                    <div class="card-img-flame">
-                        <img class="card-img" :src="song.artwork_url100">
-                        <div class="m-card-title">
-                            <div class="card-music-name">{{ song.track_name }}</div>
-                            <div class="card-artist-name">{{ song.artist_name }}</div>
-                        </div>
-                    </div>
-                    <div class="m-card-text">
-                        <blockquote>
-                            <p>{{ song.kasi }}</p>
-                        </blockquote>
-                    </div>
-                    <div class="m-header">
-                        <div class="avatar pt-0">
-                            <div class="avatar-img-flame">
-                                <div class="avatar-img">
-                                    <img class="card-img" src="https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png">
-                                </div>
-                            </div>
-                            <div class="avatar-content">
-                                <div class="avatar-name">song.user_name</div>
-                                <div class="avatar-date">{{ song.updated_at }}</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="m-card-text">
-                        {{ song.comment }}
-                    </div>
-                    <div class="m-card-actions">
-                        <mu-button flat>Action 1</mu-button>
-                        <mu-button flat>Action 2</mu-button>
-                        <mu-menu cover placement="bottom-end" @click="open = !open">
-                            <mu-button icon>
-                              <mu-icon value="more_horiz"></mu-icon>
-                            </mu-button>
-                            <mu-list slot="content">
-                              <mu-list-item button>
-                                  <!-- routerlinkでEditページへ -->
-                                <mu-list-item-title>Edit</mu-list-item-title>
-                              </mu-list-item>
-                              <mu-list-item button>
-                                  <!-- どこにも飛ばさず、そのまま削除（なんかポップアップしても良いかも） -->
-                                <mu-list-item-title>Delete</mu-list-item-title>
-                              </mu-list-item>
-                            </mu-list>
-                        </mu-menu>
-                    </div>
+        <div class="blog-card" v-for="(song, index) in songs" :key="index">
+            <div class="meta" style="display: flex; justify-content: center; align-items: center;">
+                <div >
+                    <img class="photo" alt="ジャケット写真" :src="song.artwork_url100">
+                </div>
+                <ul class="details">
+                    <li class="author"><a href="#">{{ song.track_name }}</a></li>
+                    <li>{{ song.artist_name }}</li>
+                    <li>作曲：作曲者名作曲者名</li>
+                    <li>作詞：作詞家作詞家作詞家</li>
+                    <li>アルバム：アルバムアルバム</li>
+                </ul>
+            </div>
+            <div class="description">
+                <blockquote>{{ song.kasi }}</blockquote>
+                <p class="line">{{ song.comment }}</p>
+                <div class="d-flex">
+                    <p class="user-name">tsubasa | {{ song.updated_at }}</p>
+                    <mu-menu cover placement="bottom-end" @click="open = !open">
+                        <mu-button icon>
+                          <mu-icon value="more_horiz"></mu-icon>
+                        </mu-button>
+                        <mu-list slot="content">
+                          <mu-list-item button>
+                              <!-- routerlinkでEditページへ -->
+                            <mu-list-item-title>Edit</mu-list-item-title>
+                          </mu-list-item>
+                          <mu-list-item button>
+                              <!-- どこにも飛ばさず、そのまま削除（なんかポップアップしても良いかも） -->
+                            <mu-list-item-title>Delete</mu-list-item-title>
+                          </mu-list-item>
+                        </mu-list>
+                    </mu-menu>
                 </div>
             </div>
         </div>
@@ -89,147 +70,10 @@
 </script>
 <style lang="scss" scoped>
 @import "resources/sass/app.scss";
-    .select {
-        width: 100%;
-    }
-
-    .time {
-      font-size: 13px;
-      color: #999;
-    }
-    .bottom {
-      margin-top: 13px;
-      line-height: 12px;
-    }
-    .button {
-      padding: 0;
-      float: right;
-    }
-    .image {
-      width: 100%;
-      display: block;
-    }
-    .clearfix:before,
-    .clearfix:after {
-        display: table;
-        content: "";
-    }
-    .clearfix:after {
-        clear: both
-    }
-
-
-    .m-card {
-        width: 100%;
-        max-width: 375px;
-        margin: 0 auto;
-        background-color: #fff;
-        position: relative;
-        border-radius: 2px;
-        box-shadow: 0 2px 1px -1px rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14), 0 1px 3px 0 rgba(0,0,0,.12);
-    }
-    .m-header {
-        padding: 16px;
-        padding-bottom: 0;
-        font-weight: 500;
-        position: relative;
-        white-space: nowrap;
-    }
-    .avatar {
-        display: flex;
-        padding: 16px;
-        padding-bottom: 0;
-        font-weight: 500;
-        position: relative;
-        white-space: nowrap;
-    }
-    .avatar-img-flame {
-        width: 40px;
-        height: 40px;
-        font-size: 20px;
-        margin-right: 16px;
-    }
-    .avatar-img {
-        display: flex;
-        width: 100%;
-        height: 100%;
-        align-items: center;
-        justify-content: center;
-    }
-    .avatar-content{
-        display: inline-block;
-        vertical-align: top;
-        white-space: normal;
-        padding-right: 90px;
-    }
-    .avatar-name {
-        font-size: 15px;
-        color: rgba(0,0,0,.87);
-    }
-    .avatar-date {
-        font-size: 14px;
-        color: rgba(0,0,0,.57);
-    }
-    .card-img-flame {
-        position: relative;
-    }
-    .card-img {
-        width: 100%;
-        max-width: 100%;
-        min-width: 100%;
-        display: block;
-    }
-    .m-card-title {
-        position: absolute;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        padding: 16px;
-        background-color: rgba(0,0,0,.54);
-    }
-    .card-music-name {
-        font-size: 24px;
-        color: hsla(0,0%,100%,.87);
-        line-height: 36px;
-    }
-    .card-artist-name {
-        color: hsla(0,0%,100%,.54);
-        font-size: 14px;
-    }
-    .m-card-text {
-        padding: 20px;
-        font-size: 14px;
-        color: rgba(0,0,0,.87);
-    }
-    .m-card-actions {
-        padding: 8px;
-        padding-top: 0;
-        position: relative;
-    }
-
-
-    .flex-wrapper {
-      width: 100%;
-      height: 56px;
-      margin-top: 8px;
-    }
-    .flex-demo {
-      width: 200px;
-      height: 32px;
-      background-color: #e0e0e0;
-      text-align: center;
-      line-height: 32px;
-      margin-left: 8px;
-    }
-    .flex-wrapper:first-child {
-      margin-top: 0;
-    }
-    .flex-demo:first-child {
-      margin-left: 0;
-    }
     blockquote {
         position: relative;
         padding: 10px 15px 10px 50px;
+        margin-bottom: 20px;
         box-sizing: border-box;
         font-style: italic;
         border: solid 2px #464646;
@@ -240,7 +84,7 @@
     blockquote:before{
         display: inline-block;
         position: absolute;
-        top: 10px;
+        top: 4px;
         left: 0;
         content: "“";
         font-family: sans-serif;
@@ -261,4 +105,144 @@
         color: #888888;
         font-size: 0.8em;
     }
+
+$color_white: #fff;
+$color_prime: #cddc39;
+$color_grey: #e2e2e2;
+$color_grey_dark: #a2a2a2;
+
+.blog-card {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem auto;
+  box-shadow: 0 3px 7px -1px rgba(#000, .1);
+  margin-bottom: 1.6%;
+  background: $color_white;
+  line-height: 1.4;
+  font-family: sans-serif;
+  border-radius: 5px;
+  overflow: hidden;
+  z-index: 0;
+  a {
+    color: inherit;
+    &:hover {
+      color: $color_prime;
+    }
+  }
+  &:hover {
+    .photo {
+      transform: scale(1.3) rotate(3deg);
+    }
+  }
+  .meta {
+    position: relative;
+    z-index: 0;
+    height: 200px;
+  }
+  .photo {
+    width: 150px;
+    height: 150px;
+    background-size: cover;
+    background-position: center;
+    transition: transform .2s;
+  }
+  .details,
+  .details ul {
+    margin: auto;
+    padding: 0;
+    list-style: none;
+  }
+
+  .details {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -100%;
+    margin: auto;
+    transition: left .2s;
+    background: rgba(#000, .6);
+    color: $color_white;
+    padding: 10px;
+    width: 100%;
+    font-size: .9rem;
+    a {
+      text-decoration: dotted underline
+    }
+    ul li {
+      display: inline-block;
+    }
+    li {
+        margin-bottom: 10px;
+    }
+  }
+  .description {
+    padding: 1rem;
+    background: $color_white;
+    position: relative;
+    z-index: 1;
+    .user-name {
+      font-family: Poppins, sans-serif;
+      font-weight: 300;
+      color: $color_grey_dark;
+    }
+  }
+  p {
+    position: relative;
+    margin: 1rem 0 0;
+  }
+  .line {
+      margin-top: 1.2rem;
+  }
+  .line:before {
+        content: "";
+        position: absolute;
+        height: 3px;
+        background: $color_prime;
+        width: 50%;
+        top: -0.75rem;
+        border-radius: 3px;
+  }
+  &:hover {
+    .details {
+      left: 0%;
+    }
+  }
+
+
+  @media (min-width: 640px) {
+    flex-direction: row;
+    max-width: 700px;
+    .meta {
+      flex-basis: 30%;
+      height: auto;
+    }
+    .description {
+      flex-basis: 60%;
+      &:before {
+        transform: skewX(-3deg);
+        content: "";
+        background: #fff;
+        width: 30px;
+        position: absolute;
+        left: -10px;
+        top: 0;
+        bottom: 0;
+        z-index: -1;
+      }
+    }
+    &.alt {
+      flex-direction: row-reverse;
+      .description {
+        &:before {
+          left: inherit;
+          right: -10px;
+          transform: skew(3deg)
+        }
+      }
+      .details {
+        padding-left: 25px;
+      }
+    }
+  }
+}
 </style>
