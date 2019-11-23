@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Resources\SongCollection;
 use App\Song;
-use GuzzleHttp\Client;
 
 class SongController extends Controller
 {
