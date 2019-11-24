@@ -66,7 +66,8 @@ const routes = [
     },
     {
         name: 'result',
-        path: '/result/:keyword',
+        // path: '/result/:keyword',
+        path: '/result',
         component: Result
     },
 ];
