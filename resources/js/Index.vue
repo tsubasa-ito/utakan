@@ -6,10 +6,8 @@
                     <img class="photo" alt="ジャケット写真" :src="song.artwork_url100">
                 </div>
                 <ul class="details">
-                    <li class="author"><a href="#">{{ song.track_name }}</a></li>
+                    <li><a href="#">{{ song.track_name }}</a></li>
                     <li>{{ song.artist_name }}</li>
-                    <li>作曲：作曲者名作曲者名</li>
-                    <li>作詞：作詞家作詞家作詞家</li>
                     <li>アルバム：アルバムアルバム</li>
                 </ul>
             </div>
@@ -69,7 +67,6 @@
     }
 </script>
 <style lang="scss" scoped>
-@import "resources/sass/app.scss";
     blockquote {
         position: relative;
         padding: 10px 15px 10px 50px;
@@ -198,7 +195,7 @@ $color_grey_dark: #a2a2a2;
         position: absolute;
         height: 3px;
         background: $color_prime;
-        width: 50%;
+        width: 80%;
         top: -0.75rem;
         border-radius: 3px;
   }

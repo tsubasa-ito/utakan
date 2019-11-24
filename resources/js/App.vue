@@ -5,7 +5,7 @@
                 <router-link to="/" class="mr-3">
                     <mu-bottom-nav-item title="TimeLine" icon="restore"></mu-bottom-nav-item>
                 </router-link>
-                <router-link to="/search" class="mr-3">
+                <router-link to="/result" class="mr-3">
                     <mu-bottom-nav-item title="Search" icon="favorite"></mu-bottom-nav-item>
                 </router-link>
             </mu-bottom-nav>
