@@ -18,7 +18,12 @@ class CreateSongsTable extends Migration
             $table->integer('track_id');
             $table->string('track_name');
             $table->string('artist_name');
-            $table ->string('artwork_url100');
+            $table->string('artwork_url100');
+            $table->string('artistViewUrl');
+            $table->string('collectionName')->nullable();
+            $table->string('collectionViewUrl')->nullable();
+            $table->string('trackViewUrl');
+            $table->string('previewUrl');
             $table->string('kasi')->nullable();
             $table->string('comment')->nullable();
             $table->timestamps();

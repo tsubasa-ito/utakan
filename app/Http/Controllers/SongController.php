@@ -41,7 +41,12 @@ class SongController extends Controller
             'track_name' => $request->get('trackName'),
             'artist_name' => $request->get('artistName'),
             'kasi' => $request->get('kasi'),
-            'comment' => $request->get('comment')
+            'comment' => $request->get('comment'),
+            'artistViewUrl' => $request->get('artistViewUrl'),
+            'collectionName' => $request->get('collectionName'),
+            'collectionViewUrl' => $request->get('collectionViewUrl'),
+            'trackViewUrl' => $request->get('trackViewUrl'),
+            'previewUrl' => $request->get('previewUrl'),
         ]);
 
         $song->save();

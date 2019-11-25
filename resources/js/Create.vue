@@ -1,39 +1,33 @@
 <template>
-    <div class="col-md-8 col-md-offset-2">
-        <!-- create -->
-        <h1>createpage</h1>
-        <div class="col-md-8">
-            <div class="m-card mb-3">
-                <div class="card-img-flame">
-                    <img class="card-img" :src="song.artworkUrl100" alt="songimage">
-                    <div class="m-card-title">
-                        <div class="card-music-name">{{song.trackName}}</div>
-                        <div class="card-artist-name">{{ song.artistName }}</div>
+    <div class="col-md-11 container">
+        <div>
+            <div class="blog-card" >
+                <div class="meta">
+                    <div>
+                        <img class="photo" :src="song.artworkUrl100" alt="ジャケット写真">
                     </div>
+                    <ul class="details">
+                        <li class="l-audio"><audio :src="song.previewUrl" controls></audio></li> <!--SP のみ-->
+                    </ul>
                 </div>
-                <div class="m-header">
-                    <div class="avatar">
-                        <div class="avatar-img-flame">
-                            <div class="avatar-img">
-                                <img class="card-img" src="https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png">
-                            </div>
-                        </div>
-                        <div class="avatar-content">
-                            <div class="avatar-name">avatar-name</div>
-                            <div class="avatar-date">avatar-date</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="m-card-text">
+                <div class="description" style="position: relative;">
+                    <h1 class="trackName"><a :href="song.trackViewUrl" target="_blank">{{ song.trackName }}</a></h1>
+                    <h2 class="artistName"><a :href="song.artistViewUrl" target="_blank">{{ song.artistName }}</a></h2>
+                    <p><a :href="song.collectionViewUrl" target="_blank">{{ song.collectionName }}</a></p>
+
+                    <div class="m-card-text">
                         <mu-text-field v-model="song.kasi" placeholder="心動いたフレーズを記入。" multi-line :rows="6"></mu-text-field>
                         <mu-text-field v-model="song.comment" placeholder="コメントをしてください。" multi-line :rows="6"></mu-text-field>
-                </div>
-                <div class="m-card-actions">
-                    <mu-button flat @click="addSong">Create</mu-button>
+                    </div>
+                    <audio class="r-audio" :src="song.previewUrl" controls></audio> <!--PC のみ-->
+                    <div class="m-card-actions">
+                    <mu-button @click="addSong()" color="#cddc39" style="position: absolute; right: 30px; bottom: 30px;">
+                        投稿する
+                    </mu-button>
+                    </div>
                 </div>
             </div>
         </div>
-
     </div>
 </template>
 <script>
@@ -42,9 +36,14 @@
             return {
                 song:{
                     artistName: '',
+                    artistViewUrl: '',
+                    collectionName: '',
+                    collectionViewUrl: '',
                     artworkUrl100: '',
                     trackName: '',
                     trackId: '',
+                    trackViewUrl: '',
+                    previewUrl: '',
                     kasi: '',
                     comment: '',
                 },
@@ -54,9 +53,14 @@
             axios.get(`https://itunes.apple.com/search?term=${this.$route.params.trackId}&media=music&country=jp&lang=ja_jp`)
                 .then((response) => {
                     this.song.artistName = response.data.results[0].artistName
+                    this.song.artistViewUrl = response.data.results[0].artistViewUrl
+                    this.song.collectionName = response.data.results[0].collectionName
+                    this.song.collectionViewUrl = response.data.results[0].collectionViewUrl
                     this.song.artworkUrl100 = response.data.results[0].artworkUrl100
                     this.song.trackName = response.data.results[0].trackName
                     this.song.trackId = response.data.results[0].trackId
+                    this.song.trackViewUrl = response.data.results[0].trackViewUrl
+                    this.song.previewUrl = response.data.results[0].previewUrl
                     console.log(this.song);
                 });
         },
@@ -73,92 +77,164 @@
     }
 </script>
 <style lang="scss" scoped>
-@import "resources/sass/app.scss";
-    .m-card {
-        width: 100%;
-        max-width: 375px;
-        margin: 0 auto;
-        background-color: #fff;
-        position: relative;
-        border-radius: 2px;
-        box-shadow: 0 2px 1px -1px rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14), 0 1px 3px 0 rgba(0,0,0,.12);
+$color_white: #fff;
+$color_prime: #cddc39;
+$color_grey: #e2e2e2;
+$color_grey_dark: #a2a2a2;
+
+.search {
+    margin-top:0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.blog-card {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem auto;
+  box-shadow: 0 3px 7px -1px rgba(#000, .1);
+  margin-bottom: 1.6%;
+  background: $color_white;
+  line-height: 1.4;
+  font-family: sans-serif;
+  border-radius: 5px;
+  overflow: hidden;
+  z-index: 0;
+  a {
+    color: inherit;
+    &:hover {
+      color: $color_prime;
+      text-decoration: dotted underline
     }
-    .m-header {
-        padding: 16px;
-        padding-bottom: 0;
-        font-weight: 500;
-        position: relative;
-        white-space: nowrap;
+  }
+  &:hover {
+    .photo {
+      transform: scale(1.3) rotate(3deg);
     }
-    .avatar {
-        display: flex;
-        padding: 16px;
-        padding-bottom: 0;
-        font-weight: 500;
-        position: relative;
-        white-space: nowrap;
+  }
+  .meta {
+    position: relative;
+    z-index: 0;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .photo {
+    width: 150px;
+    height: 150px;
+    background-size: cover;
+    background-position: center;
+    transition: transform .2s;
+  }
+  .details,
+  .details ul {
+    margin: auto;
+    padding: 0;
+    list-style: none;
+  }
+  .details {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -100%;
+    margin: auto;
+    transition: left .2s;
+    color: $color_white;
+    padding: 10px;
+    width: 100%;
+    font-size: .9rem;
+    ul li {
+      display: inline-block;
     }
-    .avatar-img-flame {
-        width: 40px;
-        height: 40px;
-        font-size: 20px;
-        margin-right: 16px;
+    li {
+        margin-bottom: 10px;
     }
-    .avatar-img {
-        display: flex;
-        width: 100%;
-        height: 100%;
-        align-items: center;
-        justify-content: center;
-    }
-    .avatar-content{
-        display: inline-block;
-        vertical-align: top;
-        white-space: normal;
-        padding-right: 90px;
-    }
-    .avatar-name {
-        font-size: 15px;
-        color: rgba(0,0,0,.87);
-    }
-    .avatar-date {
-        font-size: 14px;
-        color: rgba(0,0,0,.57);
-    }
-    .card-img-flame {
-        position: relative;
-    }
-    .card-img {
-        width: 100%;
-        max-width: 100%;
-        min-width: 100%;
-        display: block;
-    }
-    .m-card-title {
+  }
+  .description {
+    padding: 1rem;
+    background: $color_white;
+    position: relative;
+    z-index: 1;
+  }
+  h2 {
+    position: relative;
+    margin: 1rem 0 0;
+  }
+  .artistName {
+      margin-top: 1.2rem;
+      font-size: 1.5rem;
+  }
+  p {
+      margin-top: 1rem;
+  }
+  .artistName:before {
+        content: "";
         position: absolute;
-        left: 0;
-        right: 0;
+        height: 3px;
+        background: $color_prime;
+        width: 50%;
+        top: -0.75rem;
+        border-radius: 3px;
+  }
+  &:hover {
+    .details {
+      left: 0%;
+    }
+  }
+
+  @media (min-width: 640px) { //640px〜 →PC版
+    flex-direction: row;
+    max-width: 700px;
+    .meta {
+      flex-basis: 30%;
+      height: auto;
+    }
+    .description {
+      flex-basis: 60%;
+      &:before {
+        transform: skewX(-3deg);
+        content: "";
+        background: #fff;
+        width: 30px;
+        position: absolute;
+        left: -10px;
+        top: 0;
         bottom: 0;
-        padding: 12px;
-        background-color: rgba(0,0,0,.54);
+        z-index: -1;
+      }
     }
-    .card-music-name {
-        font-size: 20px;
-        color: hsla(0,0%,100%,.87);
-        line-height: 30px;
+    &.alt {
+      flex-direction: row-reverse;
+      .description {
+        &:before {
+          left: inherit;
+          right: -10px;
+          transform: skew(3deg)
+        }
+      }
+      .details {
+        padding-left: 25px;
+      }
     }
-    .card-artist-name {
-        font-size: 14px;
-        color: hsla(0,0%,100%,.54);
+    .l-audio {
+        display: none;
     }
-    .m-card-text {
-        padding: 20px;
-        font-size: 14px;
-        color: rgba(0,0,0,.87);
+  }
+}
+
+@media (max-width: 768px) { //maxが768pxのとき→SP版
+    .r-audio {
+        display: none;
     }
-    .m-card-actions {
-        padding: 8px;
-        padding-top: 0;
-        position: relative;
+    .l-audio {
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
+    .details {
+        background: rgba(#000, .6);
+    }
+}
+
 </style>

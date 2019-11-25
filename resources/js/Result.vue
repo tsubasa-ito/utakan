@@ -13,7 +13,7 @@
                         <img class="photo" :src="result.artworkUrl100" alt="ジャケット写真">
                     </div>
                     <ul class="details">
-                        <li class="l-audio"><audio class="tsubasa" :src="result.previewUrl" controls></audio></li> <!--SP のみ-->
+                        <li class="l-audio"><audio :src="result.previewUrl" controls></audio></li> <!--SP のみ-->
                     </ul>
                 </div>
                 <div class="description" style="position: relative;">
@@ -22,7 +22,7 @@
                     <p><a :href="result.collectionViewUrl" target="_blank">{{ result.collectionName }}</a></p>
                     <audio class="r-audio" :src="result.previewUrl" controls></audio> <!--PC のみ-->
                     <mu-button @click="select(index)" fab color="#cddc39" style="position: absolute; right: 30px; bottom: 30px;">
-                        <mu-icon value="add"></mu-icon>
+                        <mu-icon value="edit"></mu-icon>
                     </mu-button>
                 </div>
             </div>
